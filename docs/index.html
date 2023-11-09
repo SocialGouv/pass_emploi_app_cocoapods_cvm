@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BenedicteSDK  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+
+
+    <a title="BenedicteSDK  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          BenedicteSDK 1.0.7 Docs
+        </a>
+         (96% documented)
+      </p>
+    
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">BenedicteSDK Reference</a>
+      <img class="carat" src="img/carat.png" alt=""/>
+      BenedicteSDK  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Event.html">Event</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Event/typingState.html">– typingState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MatrixManager.html">MatrixManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Room.html">Room</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SessionManager.html">SessionManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/RoomMember.html">RoomMember</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/RoomMemberDisplayName.html">RoomMemberDisplayName</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/RoomMembers.html">RoomMembers</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/UserPresence.html">UserPresence</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            
+            <h1 id='code-benedictesdk-code' class='heading'><code>BenedicteSDK</code></h1>
+
+<p>BenedicteSDK est un framework qui permet d&#39;intégrer un module conversationnel dans une application iOS.</p>
+
+<h2 id="aperçu">Aperçu</h2>
+<p>BenedicteSDK fournit tous les modèles et outils pour créer et gérer un module conversationnel.</p>
+<p>L&#39;ensemble des fonctionnalités est proposé dans le manager <code>MatrixManager</code>. C&#39;est lui qui expose les méthodes utiles pour ouvrir une session, se connecter à une <code>Room</code> et envoyer ou recevoir des messages.</p>
+<p>La connexion se fait par le biais d&#39;un AccessToken passé au <code>MatrixManager/loginAndStartSession(accessToken:oauthServer:completion:)</code> qui retournera une session. L&#39;<code>accessToken</code> en paramètre est celui obtenu depuis la connexion PEConnect. L&#39;<code>oauthServer</code> est l&#39;URL de l&#39;ex160.</p>
+<p>Une session est gérée par le <code>SessionManager</code>.</p>
+<p>Tous les messages (texte, pièce-jointe) sont des objets de type <code>Event</code>.</p>
+<h2 id="guide-de-démarrage">Guide de démarrage</h2>
+<p>Voici les étapes à suivre pour commencer à récupérer des messages venant du serveur. Du démarrage du SDK (étape 1) en passant par la connexion au serveur de discussion (étape 2) jusqu&#39;à la réception des premiers messages (étape 5.2).</p>
+<ol>
+<li><p>Initialisation du SDK :</p>
+<p> Le démarrage du SDK se fait par la méthode <code>MatrixManager/initialize(paginationPageSize:)</code>. Le paramètre indique la pagination appliquée lors de la récupération de l&#39;historique des messages.</p>
+</li>
+<li><p>Connexion au serveur de discussion : </p>
+<p>Une fois en possession d&#39;un <code>accesToken</code> PEConnect valide, il faut le passer en paramètre de la méthode <code>MatrixManager/loginAndStartSession(accessToken:oauthServer:completion:)</code> avec l&#39;URL de l&#39;ex160 en second paramètre. En retour, la méthode renvoie un Booléen indiquant une connexion reussie ou non.</p>
+</li>
+<li><p>Découverte et ouverture de la discussion : </p>
+<ol>
+<li>Utiliser la méthode <code>MatrixManager/joinFirstRoom(completion:)</code> pour se connecter à la <code>Room</code> dédiée à l&#39;utilisateur connecté. En cas d&#39;échec, passer au point 3.2. En cas de succès, passer au 4.</li>
+<li>Démarrer une écoute de création de <code>Room</code> avec la méthode <code>MatrixManager/startRoomListener(completion:)</code>. En retour, dès la création d&#39;une <code>Room</code> dédiée à l&#39;utilisateur connecté, la méthode entrera dans le <code>completion:</code> avec la liste des <code>Room</code> en paramètre. De là, vous pouvez stopper le lecteur de <code>Room</code> en utilisant la méthode <code>MatrixManager/stopRoomListener()</code> puis en revenant au point 3.1.</li>
+</ol>
+</li>
+<li><p>Accès à la discussion :</p>
+<p>Le point précédent, en succès, renvoie une <code>Room</code> en paramètre. Il faut conserver cette <code>Room</code> pour la suite.</p>
+</li>
+<li><p>Préparation à la réception des messages : </p>
+<p>Il faut maintenant démarrer une écoute des <code>Event</code> qui arrivent dans cette <code>Room</code>. </p>
+<ol>
+<li>Pour ce faire, utilisez la méthode <code>MatrixManager/startMessageListener(room:, newEvent:)</code> en passant la <code>Room</code> en paramètre.</li>
+<li>Le completion <code>newEvent</code> sera déclenché à chaque nouvel évènement provenant du serveur de discussion et il sera de type <code>Event</code>.</li>
+<li>Cf. la documentation de l&#39;objet <code>Event</code> pour savoir ce que l&#39;on peut en faire.</li>
+</ol>
+</li>
+</ol>
+
+<h2 id='topics' class='heading'>Topics</h2>
+<h3 id='managers-essentiels' class='heading'>Managers essentiels</h3>
+
+<ul>
+<li><code><a href="Classes/MatrixManager.html">MatrixManager</a></code></li>
+<li><code><a href="Classes/SessionManager.html">SessionManager</a></code></li>
+</ul>
+<h3 id='modèles-disponibles' class='heading'>Modèles disponibles</h3>
+
+<ul>
+<li><code><a href="Classes/Room.html">Room</a></code></li>
+<li><code><a href="Classes/Event.html">Event</a></code></li>
+<li><code><a href="Structs/RoomMember.html">RoomMember</a></code></li>
+<li><code><a href="Structs/RoomMembers.html">RoomMembers</a></code></li>
+<li><code><a href="Structs/RoomMemberDisplayName.html">RoomMemberDisplayName</a></code></li>
+</ul>
+<h2 id='exemple' class='heading'>Exemple</h2>
+
+<p>Pour lancer le projet d&#39;exemple, clonez le repo et lancez la commande <code>pod install</code> depuis le répertoire Example.</p>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>BenedicteSDK est un package au format <a href="https://cocoapods.org">CocoaPods</a>. Pour l&#39;installer il suffit d&#39;ajouter les lignes suivantes dans votre fichier <code>podfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'BenedicteSDK'</span>
+</code></pre>
+
+<p>De définir la platforme :</p>
+<pre class="highlight ruby"><code><span class="s1">'platform :ios, '</span><span class="mi">11</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span>
+</code></pre>
+
+<p>Et d&#39;ajouter les sources :</p>
+<pre class="highlight ruby"><code><span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+<span class="n">source</span> <span class="s1">'URL pod-specs.git'</span>
+</code></pre>
+
+<p>Au final, le <code>podfile</code> devrait ressembler à :</p>
+<pre class="highlight ruby"><code><span class="c1"># Uncomment the next line to define a global platform for your project</span>
+<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'11.0'</span>
+
+<span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+<span class="n">source</span> <span class="s1">'URL pod-specs.git'</span>
+
+<span class="n">target</span> <span class="s1">'MonProjet'</span> <span class="k">do</span>
+<span class="c1"># Comment the next line if you don't want to use dynamic frameworks</span>
+<span class="n">use_frameworks!</span>
+
+<span class="c1"># Pods for MonProjet</span>
+<span class="n">pod</span> <span class="s1">'BenedicteSDK'</span>
+<span class="k">end</span>
+</code></pre>
+<h2 id='auteur' class='heading'>Auteur</h2>
+
+<p>Mobile Factory, <a href="mailto:d2iamobilefactory.00322@pole-emploi.fr">d2iamobilefactory.00322@pole-emploi.fr</a></p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>TBA</p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2023 Mobile Factory</a>. All rights reserved. (Last updated: 2023-02-15)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

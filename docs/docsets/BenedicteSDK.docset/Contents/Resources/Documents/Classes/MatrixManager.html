@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MatrixManager Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/MatrixManager" class="dashAnchor"></a>
+
+    <a title="MatrixManager Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          BenedicteSDK 1.0.7 Docs
+        </a>
+         (96% documented)
+      </p>
+    
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">BenedicteSDK Reference</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      MatrixManager Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Event.html">Event</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Event/typingState.html">– typingState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/MatrixManager.html">MatrixManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Room.html">Room</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SessionManager.html">SessionManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RoomMember.html">RoomMember</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RoomMemberDisplayName.html">RoomMemberDisplayName</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RoomMembers.html">RoomMembers</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserPresence.html">UserPresence</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>MatrixManager</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MatrixManager</span></code></pre>
+
+                </div>
+              </div>
+            <p>Ce manager est le point d&#39;entrée du SDK.</p>
+
+<p>C&#39;est un singleton dont l&#39;accès se fait par l&#39;objet <code><a href="../Classes/MatrixManager.html#/s:12BenedicteSDK13MatrixManagerC14sharedInstanceACvpZ">sharedInstance</a></code> de cette façon :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="p">{</span><span class="kt">NomDeLaMethode</span><span class="p">}</span>
+</code></pre>
+
+<p>Il est essentiel de le configurer avant toute utilisation, dans votre AppDelegate par exemple.</p>
+
+<p>La configuration se fait en utilisant soit :</p>
+
+<ul>
+<li>si vous voulez utiliser AppDynamics pour tracer votre application <code>configure(appDynamicsKey:paginationPageSize:)</code></li>
+<li>ou <code>configure(paginationPageSize:)</code> de cette façon :</li>
+</ul>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="nv">appDynamicsKey</span><span class="p">:</span> <span class="s">"XX-XXX-XXX"</span><span class="p">,</span> <span class="nv">paginationPageSize</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+<span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="nv">paginationPageSize</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</code></pre>
+
+<p>L&#39;accès au manager depuis l&#39;application ce fait par l&#39;objet <code><a href="../Classes/MatrixManager.html#/s:12BenedicteSDK13MatrixManagerC14sharedInstanceACvpZ">sharedInstance</a></code></p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20properties"></a>
+                <a name="//apple_ref/swift/Section/Public properties" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20properties"></a>
+                  <h3 class="section-name"><span>Public properties</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC14sharedInstanceACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/sharedInstance" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC14sharedInstanceACvpZ">sharedInstance</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>L&#39;instance en cours de <code>MatrixManager</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">sharedInstance</span><span class="p">:</span> <span class="kt">MatrixManager</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC15hasMoreMessagesSbSgvp"></a>
+                    <a name="//apple_ref/swift/Property/hasMoreMessages" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC15hasMoreMessagesSbSgvp">hasMoreMessages</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indique si il reste des messages à récupérer dans l&#39;historique d&#39;une conversation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">hasMoreMessages</span><span class="p">:</span> <span class="kt">Bool</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC10hasSessionSbSgvp"></a>
+                    <a name="//apple_ref/swift/Property/hasSession" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC10hasSessionSbSgvp">hasSession</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indique si une session <code><a href="../Classes/SessionManager.html">SessionManager</a></code>est en cours.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">hasSession</span><span class="p">:</span> <span class="kt">Bool</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC16alamofireSession9Alamofire0F0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/alamofireSession" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC16alamofireSession9Alamofire0F0CSgvp">alamofireSession</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Cette Session doit être utilisée si l&#39;application utilise Alamofire comme client HTTP.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">alamofireSession</span><span class="p">:</span> <span class="kt">Session</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20functions"></a>
+                <a name="//apple_ref/swift/Section/Public functions" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20functions"></a>
+                  <h3 class="section-name"><span>Public functions</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC10initialize14appDynamicsKey18paginationPageSizeySS_SitF"></a>
+                    <a name="//apple_ref/swift/Method/initialize(appDynamicsKey:paginationPageSize:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC10initialize14appDynamicsKey18paginationPageSizeySS_SitF">initialize(appDynamicsKey:<wbr>paginationPageSize:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Permet de configurer le SDK avec une clé AppDynamics au format XX-XXX-XXX.
+Doit être appelé au plus tôt dans l&#39;application (AppDelegate.swift est un bon endroit).</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="c1">// Override point for customization after application launch.</span>
+    <span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">appDynamicsKey</span><span class="p">:</span> <span class="s">"XX-XXX-XXX"</span><span class="p">,</span> <span class="nv">paginationPageSize</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">initialize</span><span class="p">(</span><span class="nv">appDynamicsKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">paginationPageSize</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>appDynamicsKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>la clé application pour AppDynamics au format XX-XXX-XXX.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>paginationPageSize</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>la taille de pagination d&#39;une discussion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC10initialize18paginationPageSizeySi_tF"></a>
+                    <a name="//apple_ref/swift/Method/initialize(paginationPageSize:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC10initialize18paginationPageSizeySi_tF">initialize(paginationPageSize:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Permet de configurer le SDK.
+Doit être appelé au plus tôt dans l&#39;application (AppDelegate.swift est un bon endroit).</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="c1">// Override point for customization after application launch.</span>
+    <span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">paginationPageSize</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">initialize</span><span class="p">(</span><span class="nv">paginationPageSize</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>paginationPageSize</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>la taille de pagination d&#39;une discussion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC032loginAndStartSessionWithUsernameF8Password0E08password12matrixServer10completionySS_S2SyyctF"></a>
+                    <a name="//apple_ref/swift/Method/loginAndStartSessionWithUsernameAndPassword(login:password:matrixServer:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC032loginAndStartSessionWithUsernameF8Password0E08password12matrixServer10completionySS_S2SyyctF">loginAndStartSessionWithUsernameAndPassword(login:<wbr>password:<wbr>matrixServer:<wbr>completion:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Permet de se connecter au serveur de conversation en utilisant un identifiant et un mot de passe.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">loginAndStartSessionWithUsernameAndPassword</span><span class="p">(</span>
+    <span class="nv">login</span><span class="p">:</span> <span class="kt">AppSettings</span><span class="o">.</span><span class="n">userId</span><span class="o">!</span><span class="p">,</span>
+    <span class="nv">password</span><span class="p">:</span> <span class="kt">AppSettings</span><span class="o">.</span><span class="n">password</span><span class="o">!</span><span class="p">,</span>
+    <span class="nv">matrixServer</span><span class="p">:</span> <span class="kt">AppSettings</span><span class="o">.</span><span class="n">matrixServer</span><span class="o">!</span><span class="p">,</span>
+    <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span>
+        <span class="c1">// Votre code içi</span>
+    <span class="p">})</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">loginAndStartSessionWithUsernameAndPassword</span><span class="p">(</span><span class="nv">login</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">matrixServer</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>login</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>l&#39;identifiant de connexion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>password</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le mot de passe.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>matrixServer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>l&#39;url du serveur de conversation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback exécuté à la fin d&#39;une connexion réussie.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC20loginAndStartSession11accessToken11oauthServer10completionySS_SSySbctF"></a>
+                    <a name="//apple_ref/swift/Method/loginAndStartSession(accessToken:oauthServer:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC20loginAndStartSession11accessToken11oauthServer10completionySS_SSySbctF">loginAndStartSession(accessToken:<wbr>oauthServer:<wbr>completion:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Permet de se connecter au serveur de conversation en utilisant un AccessToken PEConnect.</p>
+
+<p>Utilisation.</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">loginAndStartSession</span><span class="p">(</span>
+    <span class="nv">accessToken</span><span class="p">:</span> <span class="kt">OAuth2SessionManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="kt">OAuth2AccessToken</span><span class="o">.</span><span class="n">accessToken</span><span class="o">!</span><span class="p">,</span>
+    <span class="nv">oauthServer</span><span class="p">:</span> <span class="n">oauth2Configuration</span><span class="o">.</span><span class="kt">Ex160</span><span class="p">,</span>
+    <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span>
+        <span class="c1">//  Votre code içi</span>
+    <span class="p">})</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">loginAndStartSession</span><span class="p">(</span><span class="nv">accessToken</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">oauthServer</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>accessToken</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>l&#39;AccessToken d&#39;identification obtenu de PEConnect.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>oauthServer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>l&#39;url du serveur de conversation (ex160).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback exécuté à la fin d&#39;une connexion réussie.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC10getSessionAA0fD0CyF"></a>
+                    <a name="//apple_ref/swift/Method/getSession()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC10getSessionAA0fD0CyF">getSession()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Permet d&#39;obtenir le <code><a href="../Classes/SessionManager.html">SessionManager</a></code> en cours.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">getSession</span><span class="p">()</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getSession</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SessionManager.html">SessionManager</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>l&#39;instance de <code><a href="../Classes/SessionManager.html">SessionManager</a></code> utilisée.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC11stopSessionyyF"></a>
+                    <a name="//apple_ref/swift/Method/stopSession()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC11stopSessionyyF">stopSession()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Met fin à la Session en cours.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">stopSession</span><span class="p">()</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stopSession</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC17startRoomListener10completionyySayAA0F0CGSgc_tF"></a>
+                    <a name="//apple_ref/swift/Method/startRoomListener(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC17startRoomListener10completionyySayAA0F0CGSgc_tF">startRoomListener(completion:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Démarre l&#39;écoute du listing des <code><a href="../Classes/Room.html">Room</a></code>.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">startRoomListener</span><span class="p">(</span>
+    <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span> <span class="n">rooms</span> <span class="k">in</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rooms</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="o">&amp;&amp;</span> <span class="n">rooms</span><span class="p">?</span><span class="o">.</span><span class="n">isEmpty</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Votre code içi</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">startRoomListener</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">([</span><span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback contenant la liste des <code><a href="../Classes/Room.html">Room</a></code> disponibles.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC16stopRoomListeneryyF"></a>
+                    <a name="//apple_ref/swift/Method/stopRoomListener()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC16stopRoomListeneryyF">stopRoomListener()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Arrête l&#39;écoute du listing des <code><a href="../Classes/Room.html">Room</a></code>.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">stopRoomListener</span><span class="p">()</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stopRoomListener</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC13joinFirstRoom10completionyyAA0G0CSgc_tF"></a>
+                    <a name="//apple_ref/swift/Method/joinFirstRoom(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC13joinFirstRoom10completionyyAA0G0CSgc_tF">joinFirstRoom(completion:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Permet de se connecter à la première <code><a href="../Classes/Room.html">Room</a></code> disponible.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">joinFirstRoom</span><span class="p">(</span>
+    <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span> <span class="n">room</span> <span class="k">in</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">room</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Votre code içi</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">joinFirstRoom</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback qui retourne la <code><a href="../Classes/Room.html">Room</a></code> connectée. Retourne <code>nil</code> si la connexion échoue.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC15loadMoreMessage4room18withPaginationSize10completionyAA4RoomC_SiyyctF"></a>
+                    <a name="//apple_ref/swift/Method/loadMoreMessage(room:withPaginationSize:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC15loadMoreMessage4room18withPaginationSize10completionyAA4RoomC_SiyyctF">loadMoreMessage(room:<wbr>withPaginationSize:<wbr>completion:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Demande la récupération de l&#39;historique des messages.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">loadMoreMessage</span><span class="p">(</span>
+    <span class="nv">room</span><span class="p">:</span> <span class="n">room</span><span class="p">,</span>
+    <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1">// Votre code içi</span>
+    <span class="p">})</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">loadMoreMessage</span><span class="p">(</span><span class="nv">room</span><span class="p">:</span> <span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">,</span> <span class="nv">withPaginationSize</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>room</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>la <code><a href="../Classes/Room.html">Room</a></code> sur laquelle on demande l&#39;historique.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withPaginationSize</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le nombre d&rsquo;<code><a href="../Classes/Event.html">Event</a></code>à charger.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback une fois l&#39;historique disponible.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC20startMessageListener4room8newEventyAA4RoomC_yAA0J0CctF"></a>
+                    <a name="//apple_ref/swift/Method/startMessageListener(room:newEvent:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC20startMessageListener4room8newEventyAA4RoomC_yAA0J0CctF">startMessageListener(room:<wbr>newEvent:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Démarre une écoute des messages reçus sur une <code><a href="../Classes/Room.html">Room</a></code>.</p>
+
+<p>Le callback de cette méthode sera appelé à chaque fois qu&#39;un <code><a href="../Classes/Event.html">Event</a></code> est reçu du serveur de conversation.
+Un <code><a href="../Classes/Event.html">Event</a></code> peut-être un message textuel, un pièce-jointe, une information de saisie en cours,&hellip;</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">startMessageListener</span><span class="p">(</span>
+    <span class="nv">room</span><span class="p">:</span> <span class="n">room</span><span class="p">,</span>
+    <span class="nv">newEvent</span><span class="p">:{</span>
+        <span class="n">event</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span>
+        <span class="c1">// Votre code pour traiter l'``Event``</span>
+    <span class="p">)}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">startMessageListener</span><span class="p">(</span><span class="nv">room</span><span class="p">:</span> <span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">,</span> <span class="nv">newEvent</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/Event.html">Event</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>room</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>la <code><a href="../Classes/Room.html">Room</a></code> en écoute.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>newEvent</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback renvoyé par chaque nouvel <code><a href="../Classes/Event.html">Event</a></code>reçu du serveur.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC19stopMessageListener4roomyAA4RoomC_tF"></a>
+                    <a name="//apple_ref/swift/Method/stopMessageListener(room:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC19stopMessageListener4roomyAA4RoomC_tF">stopMessageListener(room:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Arrête l&#39;écoute d&#39;une <code><a href="../Classes/Room.html">Room</a></code>.</p>
+
+<p>Il n&#39;y aura plus aucun <code><a href="../Classes/Event.html">Event</a></code> reçu depuis cette <code><a href="../Classes/Room.html">Room</a></code>.</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">startMessageListener</span><span class="p">(</span>
+    <span class="nv">room</span><span class="p">:</span> <span class="n">room</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stopMessageListener</span><span class="p">(</span><span class="nv">room</span><span class="p">:</span> <span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>room</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>la <code><a href="../Classes/Room.html">Room</a></code> que l&#39;on ne souhaite plus écouter.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC11sendMessage4room7message4body8filename10completionyAA4RoomC_SSSg10Foundation3URLVSgAPySbctF"></a>
+                    <a name="//apple_ref/swift/Method/sendMessage(room:message:body:filename:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC11sendMessage4room7message4body8filename10completionyAA4RoomC_SSSg10Foundation3URLVSgAPySbctF">sendMessage(room:<wbr>message:<wbr>body:<wbr>filename:<wbr>completion:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Permet d&#39;envoyer un message sur une <code><a href="../Classes/Room.html">Room</a></code>.</p>
+
+<p>Cette méthode peut envoyer indifférement un texte ou une pièce-jointe selon les paramêtres renseignés.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="c1">// Envoyer un message texte</span>
+<span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">sendMessage</span><span class="p">(</span><span class="nv">room</span><span class="p">:</span> <span class="n">room</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="n">myMessage</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">{(</span><span class="n">successed</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span>
+        <span class="c1">// Votre code içi</span>
+    <span class="p">})</span>
+
+<span class="c1">// Envoyer une pièce-jointe</span>
+<span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">sendMessage</span><span class="p">(</span><span class="nv">room</span><span class="p">:</span> <span class="n">room</span><span class="p">,</span> <span class="nv">body</span><span class="p">:</span> <span class="n">myURL</span><span class="p">,</span> <span class="nv">filename</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="n">myFileName</span><span class="p">)</span><span class="o">!</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">{(</span><span class="n">successed</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span>
+        <span class="c1">// Votre code içi</span>
+    <span class="p">})</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nv">room</span><span class="p">:</span> <span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">body</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">filename</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>room</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>la <code><a href="../Classes/Room.html">Room</a></code> sur laquelle envoyer le message.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>message</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le texte du message. <code>nil</code> pour l&#39;envoi d&#39;une pièce-jointe.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>body</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>l&#39;url de la pièce-jointe. <code>nil</code>pour l&#39;envoi d&#39;un texte.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>filename</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le nom de la pièce-jointe. <code>nil</code> pour l&#39;envoi d&#39;un texte.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback appelé à la fin de l&#39;envoi du message.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>true</code> si l&#39;envoie a réussi. <code>false</code> sinon.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC12sendIsTyping4room6typing7timeoutyAA4RoomC_SbSdSgtF"></a>
+                    <a name="//apple_ref/swift/Method/sendIsTyping(room:typing:timeout:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC12sendIsTyping4room6typing7timeoutyAA4RoomC_SbSdSgtF">sendIsTyping(room:<wbr>typing:<wbr>timeout:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indique à une <code><a href="../Classes/Room.html">Room</a></code> si l&#39;utilisateur est en train de saisir du texte.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">sendIsTyping</span><span class="p">(</span><span class="nv">room</span><span class="p">:</span> <span class="n">room</span><span class="p">,</span> <span class="nv">typing</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">timeout</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sendIsTyping</span><span class="p">(</span><span class="nv">room</span><span class="p">:</span> <span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">,</span> <span class="nv">typing</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">timeout</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>room</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>la <code><a href="../Classes/Room.html">Room</a></code>a informé.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>typing</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>indique si une saisie est en cours.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>timeout</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>l&#39;interval de temps d&#39;inactivité avant de considérer une saisie arrêtée.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC18downloadAttachment_2to11progression10completionySS_10Foundation3URLV011destinationK0_9Alamofire15DownloadRequestC7OptionsV7optionstAJ_So17NSHTTPURLResponseCtcSgySo10NSProgressC_SStcyAL0N8ResponseVyAJSgAL7AFErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/downloadAttachment(_:to:progression:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC18downloadAttachment_2to11progression10completionySS_10Foundation3URLV011destinationK0_9Alamofire15DownloadRequestC7OptionsV7optionstAJ_So17NSHTTPURLResponseCtcSgySo10NSProgressC_SStcyAL0N8ResponseVyAJSgAL7AFErrorOGctF">downloadAttachment(_:<wbr>to:<wbr>progression:<wbr>completion:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Demande le téléchargement d&#39;une pièce-jointe.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">downloadAttachment</span><span class="p">(</span><span class="n">attachmentFile</span><span class="p">,</span> <span class="nv">progression</span><span class="p">:</span> <span class="p">{</span> <span class="n">progress</span><span class="p">,</span> <span class="n">attachmentID</span> <span class="k">in</span>
+    <span class="c1">// Code durant la progression du téléchargement</span>
+<span class="p">},</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span> <span class="n">complete</span> <span class="k">in</span>
+    <span class="c1">// Code à la fin du téléchargement</span>
+<span class="p">})</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">downloadAttachment</span><span class="p">(</span><span class="n">_</span> <span class="nv">attachmentID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">to</span> <span class="nv">destination</span><span class="p">:</span> <span class="kt">DownloadRequest</span><span class="o">.</span><span class="kt">Destination</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">progression</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Progress</span><span class="p">,</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">AFDownloadResponse</span><span class="o">&lt;</span><span class="kt">URL</span><span class="p">?</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>attachmentID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>l&#39;identifiant de la pièce-jointe sur le serveur de conversation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>destination</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le chemin vers lequel stocker la pièce-jointe.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>progression</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback qui est appelé durant le téléchargement. Retourne un objet <code>Progress</code> qui contient le pourcentage d&#39;avancement.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback qui est appelé à la fin du téléchargement. Retourne le chemin de sauvegarde de la pièce-jointe.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC16uploadAttachment_11progression10completion7failurey10Foundation3URLV_ySo10NSProgressCcySScy9Alamofire7AFErrorOctF"></a>
+                    <a name="//apple_ref/swift/Method/uploadAttachment(_:progression:completion:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC16uploadAttachment_11progression10completion7failurey10Foundation3URLV_ySo10NSProgressCcySScy9Alamofire7AFErrorOctF">uploadAttachment(_:<wbr>progression:<wbr>completion:<wbr>failure:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Demande le téléversement d&#39;une pièce-jointe.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">uploadAttachment</span><span class="p">(</span><span class="n">myURL</span><span class="p">,</span>
+    <span class="nv">progression</span><span class="p">:</span> <span class="p">{</span> <span class="n">progress</span> <span class="k">in</span>
+    <span class="p">},</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span> <span class="n">completion</span> <span class="k">in</span>
+    <span class="p">},</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">{</span> <span class="n">failure</span> <span class="k">in</span>
+<span class="p">})</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">uploadAttachment</span><span class="p">(</span><span class="n">_</span> <span class="nv">file</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">progression</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Progress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">AFError</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>file</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>l&#39;url du fichier à téléverser.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>progression</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback durant le chargement. Retourne un objet <code>Progress</code> qui contient le pourcentage d&#39;avancement.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback en fin de chargement réussi.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback si une erreur se produit.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC13getMemberName6userId10completionySS_ySSctF"></a>
+                    <a name="//apple_ref/swift/Method/getMemberName(userId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC13getMemberName6userId10completionySS_ySSctF">getMemberName(userId:<wbr>completion:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Permet d&#39;obtenir le pseudonyme d&#39;un utilisateur.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">getMemberName</span><span class="p">(</span><span class="nv">userId</span><span class="p">:</span> <span class="p">(</span><span class="n">partner</span><span class="p">?</span><span class="o">.</span><span class="n">userId</span><span class="p">)</span><span class="o">!</span><span class="p">,</span>
+    <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span> <span class="n">username</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span> <span class="p">})</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getMemberName</span><span class="p">(</span><span class="nv">userId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>userId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>l&#39;identifiant de l&#39;utilisateur.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback appelé avec le nom en retour.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC14getRoomMembers_10completionyAA0F0C_yAA0fG0VctF"></a>
+                    <a name="//apple_ref/swift/Method/getRoomMembers(_:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC14getRoomMembers_10completionyAA0F0C_yAA0fG0VctF">getRoomMembers(_:<wbr>completion:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Permet d&#39;obtenir la liste des utilisateur d&#39;une <code><a href="../Classes/Room.html">Room</a></code>.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">getRoomMembers</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">room</span><span class="p">,</span>
+    <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span> <span class="n">allMembers</span> <span class="k">in</span>
+<span class="p">})</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getRoomMembers</span><span class="p">(</span><span class="n">_</span> <span class="nv">room</span><span class="p">:</span> <span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/RoomMembers.html">RoomMembers</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>room</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>la <code><a href="../Classes/Room.html">Room</a></code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>le callback avec un objet <code><a href="../Structs/RoomMembers.html">RoomMembers</a></code> contenant la liste des utilisateur.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12BenedicteSDK13MatrixManagerC15getUserPresence_10completionySSSg_yAA0fG0VctF"></a>
+                    <a name="//apple_ref/swift/Method/getUserPresence(_:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12BenedicteSDK13MatrixManagerC15getUserPresence_10completionySSSg_yAA0fG0VctF">getUserPresence(_:<wbr>completion:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Permet d&#39;obtenir des informations sur la disponibilité d&#39;un utilisateur.</p>
+
+<p>Utilisation :</p>
+<pre class="highlight swift"><code><span class="kt">MatrixManager</span><span class="o">.</span><span class="n">sharedInstance</span><span class="o">.</span><span class="nf">getUserPresence</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span> <span class="n">userPresence</span> <span class="k">in</span> <span class="p">})</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getUserPresence</span><span class="p">(</span><span class="n">_</span> <span class="nv">userId</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/UserPresence.html">UserPresence</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>userId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>l&#39;identifiant de l&#39;utilisateur.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>en callback, l&#39;objet <code><a href="../Structs/UserPresence.html">UserPresence</a></code>de cet utilisateur.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2023 Mobile Factory</a>. All rights reserved. (Last updated: 2023-02-15)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

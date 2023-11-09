@@ -1,0 +1,5 @@
+disable_search: true
+
+theme: fullwidth
+
+podspec: BenedicteSDK.podspec

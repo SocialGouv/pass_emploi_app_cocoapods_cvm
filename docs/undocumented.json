@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/poleemploi/PROJETS/Mobile_Factory/Natif_iOS/pod/BenedicteSDK/BenedicteSDK/BenedicteSDK/Classes/Model/Event.swift",
+      "line": 33,
+      "symbol": "Event.typingState.start",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/poleemploi/PROJETS/Mobile_Factory/Natif_iOS/pod/BenedicteSDK/BenedicteSDK/BenedicteSDK/Classes/Model/Event.swift",
+      "line": 34,
+      "symbol": "Event.typingState.end",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/poleemploi/PROJETS/Mobile_Factory/Natif_iOS/pod/BenedicteSDK/BenedicteSDK"
+}
